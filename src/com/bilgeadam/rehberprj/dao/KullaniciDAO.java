@@ -13,7 +13,7 @@ public class KullaniciDAO {
     public static boolean girişeYetkilimi(KullaniciDTO kullanici)
             throws SQLException, ClassNotFoundException {
 
-        String vtSifre = "";
+        String vtSifre = null;
 
         Connection conn = VTBaglanti.baglantiGetir();
 
