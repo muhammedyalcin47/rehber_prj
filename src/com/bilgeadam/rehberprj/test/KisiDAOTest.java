@@ -11,12 +11,12 @@ public class KisiDAOTest {
 
     public void ekleTest() throws ParseException, SQLException, ClassNotFoundException {
         KisiDTO kisi = new KisiDTO();
-        kisi.setNo(1);
-        kisi.setAd("Naim");
-        kisi.setSoyad("Süleymanoğlu");
-        kisi.setMaas(4567.85);
-        kisi.setDogtar(CevirmeIslemleri.strToUtilDate("11/02/1978"));
-        kisi.setMobilTel("+905321234567");
+        kisi.setNo(2);
+        kisi.setAd("Zalim");
+        kisi.setSoyad("Reis");
+        kisi.setMaas(0);
+        kisi.setDogtar(CevirmeIslemleri.strToUtilDate("21/04/2002"));
+        kisi.setMobilTel("+90532saray");
 
         boolean sonuc = KisiDAO.ekle(kisi);
 
