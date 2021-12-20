@@ -59,11 +59,18 @@ public class LoginForm extends JFrame {
 
                     boolean sonuc = KullaniciDAO.girişeYetkilimi(kullanici);
 
-                    if (sonuc)
-                        JOptionPane.showMessageDialog(null,"Girişe Yetkilidir");
-                                else
-                                    JOptionPane.showMessageDialog(null,"Girişe Yetkili Değğildir");
+                    if (sonuc) {
+                        MenuForm menu = new MenuForm();
 
+                        // menü ekranını göster
+                        menu.setVisible(true);
+
+                        // login ekranını gizle
+                        setVisible(false);
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Girişe Yetkili Değğildir");
+                    }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                     JOptionPane.showMessageDialog(null,"Hata:" + ex.getMessage());
