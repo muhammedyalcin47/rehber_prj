@@ -6,6 +6,7 @@ import com.bilgeadam.rehberprj.util.CevirmeIslemleri;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.List;
 
 public class KisiDAOTest {
 
@@ -26,19 +27,31 @@ public class KisiDAOTest {
             System.out.println("Eklenemedi!!!");
 
     }
+    public void listeleTest()
+            throws SQLException, ClassNotFoundException {
+        List<KisiDTO> kisiler = KisiDAO.listele();
+
+
+        for(KisiDTO kisi: kisiler)
+        {
+            System.out.println(kisi);
+        }
+    }
 
     public static void main(String[] args) {
 
         try {
 
             KisiDAOTest kdt = new KisiDAOTest();
-            kdt.ekleTest();
+            //kdt.ekleTest();
+            kdt.listeleTest();
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        }  catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
 

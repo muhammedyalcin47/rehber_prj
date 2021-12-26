@@ -46,9 +46,41 @@ public class KisiDAO {
 
     }
 
-    public static List<KisiDTO> listele()
-    {
+    public static List<KisiDTO> listele() throws SQLException, ClassNotFoundException {
         List<KisiDTO> kisiListesi = new ArrayList();
+
+        Connection conn = VTBaglanti.baglantiGetir();
+
+        String sorgu = "select no, ad, soyad, maas, dogtar, mobil_tel from kisi";
+
+        PreparedStatement ps = conn.prepareStatement(sorgu);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next())
+        {
+            KisiDTO kisi = new KisiDTO();
+            kisi.setNo(rs.getInt("no"));
+            kisi.setAd(rs.getString("ad"));
+            kisi.setSoyad(rs.getString("soyad"));
+            kisi.setMaas(rs.getDouble("maas"));
+            kisi.setDogtar(CevirmeIslemleri.sqlToUtilDate(rs.getDate("dogtar")));
+            kisi.setMobilTel(rs.getString("mobil_tel"));
+
+
+            kisiListesi.add(kisi);
+        }
+
+        rs.close();
+
+
+
+
+        ps.close();
+        VTBaglanti.baglantiKapat(conn);
+
+
+
 
         return kisiListesi;
     }

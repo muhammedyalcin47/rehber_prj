@@ -1,5 +1,7 @@
 package com.bilgeadam.rehberprj.dto;
 
+import com.bilgeadam.rehberprj.util.CevirmeIslemleri;
+
 import java.util.Date;
 
 public class KisiDTO {
@@ -57,5 +59,16 @@ public class KisiDTO {
 
     public void setMobilTel(String mobilTel) {
         this.mobilTel = mobilTel;
+    }
+
+    @Override
+    public String toString() {
+        return "Kisi:" +
+                "no=" + no +
+                ", ad=" + ad +
+                ", soyad=" + soyad +
+                ", maas=" + maas +
+                ", dogtar=" + CevirmeIslemleri.utilDateToStr(dogtar) +
+                ", mobilTel=" + mobilTel;
     }
 }
